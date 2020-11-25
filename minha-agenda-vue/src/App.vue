@@ -47,7 +47,7 @@ export default {
 
 body {
   margin: 0;
-  background-color: rgb(240, 235, 235);
+  background-color: white;
 }
 
 #container {

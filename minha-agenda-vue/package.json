@@ -11,6 +11,7 @@
     "core-js": "^3.6.5",
     "v-mask": "^2.2.3",
     "vue": "^3.0.0",
+    "vuejs-mask": "^1.0.2",
     "vuex": "^4.0.0-rc.1"
   },
   "devDependencies": {

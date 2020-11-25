@@ -3,24 +3,23 @@
     <div id="formularioContatos">
       <form @submit="salvar">
         <div class="input-block">
-          <label for="nome" >Nome</label>
-          <input type="text" name="nome" id="nome"
-           required v-model="nome"/>
+          <label for="nome">Nome</label>
+          <input type="text" name="nome" id="nome" v-model="nome" required />
         </div>
+
         <div class="input-block">
           <label for="nome">Telefone</label>
           <input
             type="text"
             name="telefone"
             id="telefone"
-            required
             v-model="telefone"
+            required
           />
         </div>
-
         <div class="input-block">
           <label for="nome">E-mail</label>
-          <input type="text" name="email" id="email"  v-model="email"/>
+          <input type="text" name="email" id="email" v-model="email" />
         </div>
         <button>Salvar</button>
       </form>
@@ -29,30 +28,27 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex'
-import Lancamento from '../models/Lancamento';
+import { mapActions } from "vuex";
+import Lancamento from "../models/Lancamento";
+
 export default {
-    name: "PainelLacamentoContato",
-    data: ( )=> {
-      return {
-        nome: "",
-        telefone:"mask",
-        email: " ",
-      };
-    },
- 
-    methods: {
-      ...mapActions([ "salvarContato"]),
-    Salvar(event) {
-      event.preventDefault( );
-     const lancamento = new Lancamento( this.nome, this.telefone, this.email);
-     this.salvarContato(lancamento);
-    
-      
+  name: "PainelLacamentoContato",
+  data: () => {
+    return {
+      nome: " ",
+      telefone: " ",
+      email: " ",
+    };
+  },
+  methods: {
+    ...mapActions(["salvarContato"]),
+    salvar(event) {
+      event.preventDefault();
+      const contato = new Lancamento(this.nome, this.telefone, this.email);
+      this.salvarContato(contato);
     },
   },
-    
-}
+};
 </script>
 
 <style scoped>
@@ -66,9 +62,10 @@ export default {
   background-color: white;
   border-radius: 20px;
   padding: 20px;
+
 }
 .input-block {
-  position: relative; /*isso serve para que o position absolut funciona*/
+  position: relative;
 }
 
 #nome,
@@ -83,8 +80,8 @@ export default {
   border-radius: 10px;
   background: var(--color-input);
   border: 1px solid var(--color-border);
-  outline: 0; /* tira cor padrao da selecao quando vc aperta */
-  padding: 10px; /* deixa a borda arredondada*/
+  outline: 0;
+  padding: 10px;
 }
 
 .input-block:focus-within::after {
@@ -109,10 +106,9 @@ button {
   font-size: 120%;
   cursor: pointer;
   transition: 0.3;
+    
 }
 button:hover {
   color: var(--color-trasicao);
 }
-
- 
 </style>

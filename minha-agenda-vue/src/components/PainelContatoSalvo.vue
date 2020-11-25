@@ -1,59 +1,36 @@
 <template>
-  <div class="blocoLancamento">
-    <button class="botaoRemover">
-      <img src="../img/lixeira1.png" alt="remover Contatos" />
-    </button>
-
-    <div id="areaLancamentos">
-      <LancamentoContato
-      v-for="lancamento in todosLancamentosContato"
-      v-bind:key=" lancamento.id"
-       :lancamento= "lancamento"
-      />
-    </div>
+  <div id="areaLancamentos">
+    <LancamentoContato
+      v-for="contato in todosLancamentosContato"
+      v-bind:key="contato.id"
+      :contato="contato"
+    />
   </div>
 </template>
 
 <script>
-import  {mapGetters} from 'vuex'
+import { mapGetters } from "vuex";
 import LancamentoContato from "./LancamentoContato.vue";
 export default {
   name: "PainelContatoSalvo",
   data: () => {
-    return {
-      LancamentoContato: [],
-    };
+    return {};
   },
+  computed: mapGetters(["todosLancamentosContato"]),
   components: {
     LancamentoContato,
   },
-  computed: mapGetters([ "todosLancamentosContato"] ),
-  
+  props: {
+    contato: Object,
+  },
 };
 </script>
 
 <style scoped>
-.blocoLancamento {
-  width: 60%;
-  padding: 10px;
-  background-color: white;
+#areaLancamentos {
+  width: 50%;
+  padding: px;
+  background-color: rgb(240, 235, 235);
   border-radius: 20px;
-}
-.botaoRemover {
-  border: none;
-  outline: none;
-  background-color: white;
-  vertical-align: middle;
-}
-
-.botaoRemover:hover {
-  cursor: pointer;
-}
-.botaoRemover img {
-  width: 40px;
-  float: left;
-}
-.botaoRemover img:active {
-  filter: invert(100%);
 }
 </style>
